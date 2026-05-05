@@ -226,7 +226,7 @@
       label1.textContent = percent1.toFixed(2) + "% of the wait since you left....";
 
       const target = new Date("May 22, 2026 23:00:00 EDT").getTime();
-      const total2 = target - start2;
+      const total2 = end2 - start2;
       const elapsed2 = now - start2;
       const percent2 = Math.min(Math.max((elapsed2 / total2) * 100, 0), 100);
       bar2.style.width = percent2.toFixed(2) + "%";
