@@ -183,8 +183,15 @@
 
     /* COUNTDOWN LOGIC */
     const target = new Date("May 22, 2026 23:00:00 EDT").getTime();
+
+    // Progress bar #1 start date (when you left Florida)
     const start1 = new Date("May 2, 2026 12:00:00 EDT").getTime();
+
+    // Progress bar #2 start date (total trip)
     const start2 = new Date("May 2, 2026 12:00:00 EDT").getTime();
+
+    // NEW END DATE FOR BAR #2
+    const end2 = new Date("May 30, 2026 13:00:00 EDT").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -219,14 +226,15 @@
       const survivedDays = Math.floor(survivedMs / (1000 * 60 * 60 * 24));
       daysSurvivedEl.textContent = survivedDays + " days survived since leaving....";
 
+      // Progress bar #1
       const total1 = target - start1;
       const elapsed1 = now - start1;
       const percent1 = Math.min(Math.max((elapsed1 / total1) * 100, 0), 100);
       bar1.style.width = percent1.toFixed(2) + "%";
       label1.textContent = percent1.toFixed(2) + "% of the wait since you left....";
 
-const target = new Date("May 22, 2026 23:00:00 EDT").getTime();
-      const total2 = target - start2;
+      // Progress bar #2 (corrected end date)
+      const total2 = end2 - start2;
       const elapsed2 = now - start2;
       const percent2 = Math.min(Math.max((elapsed2 / total2) * 100, 0), 100);
       bar2.style.width = percent2.toFixed(2) + "%";
@@ -237,4 +245,3 @@ const target = new Date("May 22, 2026 23:00:00 EDT").getTime();
     setInterval(updateCountdown, 1000);
   </script>
 </body>
-</html>
