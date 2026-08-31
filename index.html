@@ -15,7 +15,6 @@
       overflow-y: hidden;
     }
 
-    /* STARFIELD BACKGROUND */
     #starfield {
       position: fixed;
       top: 0;
@@ -42,7 +41,6 @@
       to { transform: translateY(800px); }
     }
 
-    /* GLOWING BORDER AROUND MAIN CONTENT */
     #glowBox {
       width: 80%;
       max-width: 800px;
@@ -65,7 +63,6 @@
       margin: 20px 0 30px;
     }
 
-    /* Progress bars */
     .bar-container {
       width: 70%;
       max-width: 600px;
@@ -88,7 +85,6 @@
       color: #d1d5db;
     }
 
-    /* Heartbeat */
     .pulse-wrapper {
       margin-top: 20px;
     }
@@ -109,7 +105,6 @@
       100% { transform: scale(1); }
     }
 
-    /* Floating love message */
     #floatingLove {
       position: fixed;
       top: 20%;
@@ -133,35 +128,28 @@
 </head>
 <body>
 
-  <!-- STARFIELD -->
   <div id="starfield"></div>
 
-  <!-- FLOATING LOVE MESSAGE -->
   <div id="floatingLove">no matter where I am, remember I love you!</div>
 
-  <!-- MAIN CONTENT WITH GLOW -->
   <div id="glowBox">
     <h1>Countdown to my amazing wife's arrival, and the kids! ❤️</h1>
-    <h2>May 22, 2026 – 11:00 PM (EDT)</h2>
+    <h2>October 31, 2026 – 4:00 PM (EDT)</h2>
 
     <div id="countdown"></div>
 
-    <!-- Days survived counter -->
     <div id="daysSurvived" style="font-size: 1.4rem; margin-top: 20px; color: #f3f4f6;"></div>
 
-    <!-- Progress bar 1 -->
     <div class="bar-container">
       <div class="bar-fill" id="bar1"></div>
     </div>
     <div class="label" id="label1"></div>
 
-    <!-- Progress bar 2 -->
     <div class="bar-container">
       <div class="bar-fill" id="bar2"></div>
     </div>
     <div class="label" id="label2"></div>
 
-    <!-- Heartbeat -->
     <div class="pulse-wrapper">
       <div class="pulse"></div>
       <div class="label">Every beat is one second closer</div>
@@ -169,7 +157,6 @@
   </div>
 
   <script>
-    /* STARFIELD GENERATION */
     const starfield = document.getElementById("starfield");
     for (let i = 0; i < 120; i++) {
       const star = document.createElement("div");
@@ -181,17 +168,13 @@
       starfield.appendChild(star);
     }
 
-    /* COUNTDOWN LOGIC */
-    const target = new Date("May 22, 2026 23:00:00 EDT").getTime();
+    /* NEW DATES */
+    const target = new Date("October 31, 2026 16:00:00 EDT").getTime();
 
-    // Progress bar #1 start date (when you left Florida)
-    const start1 = new Date("May 2, 2026 12:00:00 EDT").getTime();
+    const start1 = new Date("August 1, 2026 08:35:00 EDT").getTime();
+    const start2 = new Date("August 1, 2026 08:35:00 EDT").getTime();
 
-    // Progress bar #2 start date (total trip)
-    const start2 = new Date("May 2, 2026 12:00:00 EDT").getTime();
-
-    // NEW END DATE FOR BAR #2
-    const end2 = new Date("May 30, 2026 13:00:00 EDT").getTime();
+    const end2 = new Date("October 31, 2026 16:00:00 EDT").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -226,14 +209,12 @@
       const survivedDays = Math.floor(survivedMs / (1000 * 60 * 60 * 24));
       daysSurvivedEl.textContent = survivedDays + " days survived since leaving....";
 
-      // Progress bar #1
       const total1 = target - start1;
       const elapsed1 = now - start1;
       const percent1 = Math.min(Math.max((elapsed1 / total1) * 100, 0), 100);
       bar1.style.width = percent1.toFixed(2) + "%";
       label1.textContent = percent1.toFixed(2) + "% of the wait since you left....";
 
-      // Progress bar #2 (corrected end date)
       const total2 = end2 - start2;
       const elapsed2 = now - start2;
       const percent2 = Math.min(Math.max((elapsed2 / total2) * 100, 0), 100);
@@ -245,3 +226,4 @@
     setInterval(updateCountdown, 1000);
   </script>
 </body>
+</html>
